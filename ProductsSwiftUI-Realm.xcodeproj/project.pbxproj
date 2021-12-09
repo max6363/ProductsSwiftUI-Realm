@@ -16,6 +16,7 @@
 		888E96A02760B8F200F59C0F /* DBViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888E969F2760B8F200F59C0F /* DBViewModel.swift */; };
 		888E96A22760B96C00F59C0F /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888E96A12760B96C00F59C0F /* Product.swift */; };
 		888E96A52760B9E800F59C0F /* DataCreater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888E96A42760B9E800F59C0F /* DataCreater.swift */; };
+		888E96A72761C3FF00F59C0F /* AddProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888E96A62761C3FF00F59C0F /* AddProductView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		888E969F2760B8F200F59C0F /* DBViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBViewModel.swift; sourceTree = "<group>"; };
 		888E96A12760B96C00F59C0F /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		888E96A42760B9E800F59C0F /* DataCreater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCreater.swift; sourceTree = "<group>"; };
+		888E96A62761C3FF00F59C0F /* AddProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductView.swift; sourceTree = "<group>"; };
 		9F29A3BCF12A70CF60A0588E /* Pods-ProductsSwiftUI-Realm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProductsSwiftUI-Realm.release.xcconfig"; path = "Target Support Files/Pods-ProductsSwiftUI-Realm/Pods-ProductsSwiftUI-Realm.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -123,6 +125,7 @@
 			children = (
 				888E968E2760B69800F59C0F /* ContentView.swift */,
 				888E969D2760B74200F59C0F /* ProductListView.swift */,
+				888E96A62761C3FF00F59C0F /* AddProductView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -251,6 +254,7 @@
 			files = (
 				888E969E2760B74200F59C0F /* ProductListView.swift in Sources */,
 				888E968F2760B69800F59C0F /* ContentView.swift in Sources */,
+				888E96A72761C3FF00F59C0F /* AddProductView.swift in Sources */,
 				888E96A22760B96C00F59C0F /* Product.swift in Sources */,
 				888E96A02760B8F200F59C0F /* DBViewModel.swift in Sources */,
 				888E96A52760B9E800F59C0F /* DataCreater.swift in Sources */,

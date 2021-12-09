@@ -21,6 +21,11 @@ enum SortingOrder {
 
 class DBViewModel: ObservableObject {
     
+    // Data ...
+    @Published var title = ""
+    @Published var itemDescription = ""
+    @Published var price = "0"
+    
     // Fetched Data ...
     @Published var products: [Product] = []
     
@@ -31,9 +36,13 @@ class DBViewModel: ObservableObject {
     
     @Published var sortingOrder: SortingOrder = .ascending
     
+    @Published var openNewProduct = false
+    
+    @Published var updateProduct: Product? = nil
+    
     // Initialize ...
     init() {
-        DataCreater.insertDummyData()
+//        DataCreater.insertDummyData()
         fetchData()
     }
     
@@ -61,5 +70,55 @@ class DBViewModel: ObservableObject {
         self.products = results.compactMap({ (product) -> Product? in
             return product
         })
+    }
+    
+    // Adding data ...
+    func addData(object: Product) {
+        
+        // reference
+        guard let dbRef = try? Realm() else { return }
+        
+        // writing data
+        try? dbRef.write {
+            
+            dbRef.add(object)
+            
+            fetchData()
+        }
+    }
+    
+    // Updating data ...
+    func updateData(object: Product) {
+        
+        // reference
+        guard let dbRef = try? Realm() else { return }
+        
+        // updating data
+        try? dbRef.write {
+            object.title = title
+            object.itemDescription = itemDescription
+            object.price = Double(price) ?? 0.0
+            
+            fetchData()
+        }
+    }
+    
+    // Setting and Clearing Data ...
+    
+    func setupInitialData() {
+        guard let updateData = updateProduct else {
+            return
+        }
+        
+        title = updateData.title
+        itemDescription = updateData.itemDescription
+        price = "\(updateData.price)"
+    }
+    
+    func deInitData() {
+        updateProduct = nil
+        title = ""
+        itemDescription = ""
+        price = ""
     }
 }

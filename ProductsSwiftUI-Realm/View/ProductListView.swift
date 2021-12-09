@@ -41,6 +41,14 @@ struct ProductListView: View {
                 List {
                     ForEach(modelData.products) { product in
                         ProductItemRow(product: product)
+                            .onTapGesture {
+
+                                modelData.title = product.title
+                                modelData.itemDescription = product.itemDescription
+                                modelData.price = "\(product.price)"
+                                modelData.updateProduct = product
+                                modelData.openNewProduct.toggle()
+                            }
                     }
                 }
             }
@@ -52,6 +60,20 @@ struct ProductListView: View {
             .onChange(of: modelData.searchString) { searchText in
                 modelData.fetchData()
             }
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        modelData.openNewProduct.toggle()
+                    }, label: {
+                        Image(systemName: "plus")
+                            .font(.title2)
+                    })
+                }
+            }
+            .sheet(isPresented: $modelData.openNewProduct, content: {
+                AddProductView()
+                    .environmentObject(modelData)
+            })
         }
     }
 }
