@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		77CB2C9A5A9EF95E248808E3 /* Pods_ProductsSwiftUI_Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 672B99E502188FDEA082C00E /* Pods_ProductsSwiftUI_Realm.framework */; };
 		888E968D2760B69800F59C0F /* ProductsSwiftUI_RealmApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888E968C2760B69800F59C0F /* ProductsSwiftUI_RealmApp.swift */; };
-		888E968F2760B69800F59C0F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888E968E2760B69800F59C0F /* ContentView.swift */; };
 		888E96912760B69900F59C0F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 888E96902760B69900F59C0F /* Assets.xcassets */; };
 		888E96942760B69900F59C0F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 888E96932760B69900F59C0F /* Preview Assets.xcassets */; };
 		888E969E2760B74200F59C0F /* ProductListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888E969D2760B74200F59C0F /* ProductListView.swift */; };
@@ -18,6 +17,9 @@
 		888E96A52760B9E800F59C0F /* DataCreater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888E96A42760B9E800F59C0F /* DataCreater.swift */; };
 		888E96A72761C3FF00F59C0F /* AddProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888E96A62761C3FF00F59C0F /* AddProductView.swift */; };
 		888E96A92761FCED00F59C0F /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888E96A82761FCED00F59C0F /* Category.swift */; };
+		888E96AD27622B4000F59C0F /* CategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888E96AC27622B4000F59C0F /* CategoriesView.swift */; };
+		888E96AF27622CE500F59C0F /* CategoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888E96AE27622CE500F59C0F /* CategoriesViewModel.swift */; };
+		888E96B1276234EB00F59C0F /* ProductsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888E96B0276234EB00F59C0F /* ProductsList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +27,6 @@
 		672B99E502188FDEA082C00E /* Pods_ProductsSwiftUI_Realm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProductsSwiftUI_Realm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		888E96892760B69800F59C0F /* ProductsSwiftUI-Realm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ProductsSwiftUI-Realm.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		888E968C2760B69800F59C0F /* ProductsSwiftUI_RealmApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsSwiftUI_RealmApp.swift; sourceTree = "<group>"; };
-		888E968E2760B69800F59C0F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		888E96902760B69900F59C0F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		888E96932760B69900F59C0F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		888E969D2760B74200F59C0F /* ProductListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListView.swift; sourceTree = "<group>"; };
@@ -34,6 +35,9 @@
 		888E96A42760B9E800F59C0F /* DataCreater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCreater.swift; sourceTree = "<group>"; };
 		888E96A62761C3FF00F59C0F /* AddProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductView.swift; sourceTree = "<group>"; };
 		888E96A82761FCED00F59C0F /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		888E96AC27622B4000F59C0F /* CategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesView.swift; sourceTree = "<group>"; };
+		888E96AE27622CE500F59C0F /* CategoriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewModel.swift; sourceTree = "<group>"; };
+		888E96B0276234EB00F59C0F /* ProductsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsList.swift; sourceTree = "<group>"; };
 		9F29A3BCF12A70CF60A0588E /* Pods-ProductsSwiftUI-Realm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProductsSwiftUI-Realm.release.xcconfig"; path = "Target Support Files/Pods-ProductsSwiftUI-Realm/Pods-ProductsSwiftUI-Realm.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -110,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				888E969F2760B8F200F59C0F /* DBViewModel.swift */,
+				888E96AE27622CE500F59C0F /* CategoriesViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -126,9 +131,10 @@
 		888E969C2760B70A00F59C0F /* View */ = {
 			isa = PBXGroup;
 			children = (
-				888E968E2760B69800F59C0F /* ContentView.swift */,
 				888E969D2760B74200F59C0F /* ProductListView.swift */,
 				888E96A62761C3FF00F59C0F /* AddProductView.swift */,
+				888E96AC27622B4000F59C0F /* CategoriesView.swift */,
+				888E96B0276234EB00F59C0F /* ProductsList.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -256,12 +262,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				888E969E2760B74200F59C0F /* ProductListView.swift in Sources */,
-				888E968F2760B69800F59C0F /* ContentView.swift in Sources */,
 				888E96A72761C3FF00F59C0F /* AddProductView.swift in Sources */,
 				888E96A22760B96C00F59C0F /* Product.swift in Sources */,
 				888E96A02760B8F200F59C0F /* DBViewModel.swift in Sources */,
 				888E96A52760B9E800F59C0F /* DataCreater.swift in Sources */,
 				888E968D2760B69800F59C0F /* ProductsSwiftUI_RealmApp.swift in Sources */,
+				888E96AD27622B4000F59C0F /* CategoriesView.swift in Sources */,
+				888E96B1276234EB00F59C0F /* ProductsList.swift in Sources */,
+				888E96AF27622CE500F59C0F /* CategoriesViewModel.swift in Sources */,
 				888E96A92761FCED00F59C0F /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -64,6 +64,11 @@ struct ProductListView: View {
                 modelData.fetchData()
             }
             .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    NavigationLink(destination: CategoriesView()) {
+                        Text("Categories")
+                    }
+                }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
                         modelData.openNewProduct.toggle()
@@ -76,6 +81,9 @@ struct ProductListView: View {
             .sheet(isPresented: $modelData.openNewProduct, content: {
                 AddProductView()
                     .environmentObject(modelData)
+            })
+            .onAppear(perform: {
+                modelData.fetchData()
             })
         }
     }
