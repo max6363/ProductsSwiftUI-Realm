@@ -24,6 +24,19 @@ class DataCreater {
         // clear all
         deleteAllProducts()
         
+        // categories
+        let food = Category()
+        food.name = Kind.Food.rawValue
+        
+        let stationaries = Category()
+        stationaries.name = Kind.Stationaries.rawValue
+        
+        let mobilePhones = Category()
+        mobilePhones.name = Kind.MobilePhones.rawValue
+        
+        let others = Category()
+        others.name = Kind.Others.rawValue
+        
         // add products
         
         let newApple = Product()
@@ -32,6 +45,7 @@ class DataCreater {
         newApple.price = 2.99
         newApple.id = UUID()
         newApple.dateAdded = DateHelper.date(year: 2021, month: 12, day: 1)
+        newApple.category = food
         
         let newPen = Product()
         newPen.title = "Pen"
@@ -39,6 +53,7 @@ class DataCreater {
         newPen.price = 0.25
         newPen.id = UUID()
         newPen.dateAdded = DateHelper.date(year: 2021, month: 6, day: 1)
+        newPen.category = stationaries
         
         let newPhone = Product()
         newPhone.title = "iPhone 13 Pro"
@@ -46,6 +61,7 @@ class DataCreater {
         newPhone.price = 1299
         newPhone.id = UUID()
         newPhone.dateAdded = DateHelper.date(year: 2021, month: 9, day: 12)
+        newPhone.category = mobilePhones
         
         let newAppleJuice = Product()
         newAppleJuice.title = "Apple Juice (All fresh)"
@@ -53,6 +69,7 @@ class DataCreater {
         newAppleJuice.price = 7.75
         newAppleJuice.id = UUID()
         newAppleJuice.dateAdded = Date()
+        newAppleJuice.category = food
         
         let newBottle = Product()
         newBottle.title = "Water Bottle"
@@ -60,6 +77,7 @@ class DataCreater {
         newBottle.price = 2.5
         newBottle.id = UUID()
         newBottle.dateAdded = DateHelper.date(year: 2021, month: 12, day: 6)
+        newBottle.category = others
         
         try? dbRef?.write {
             

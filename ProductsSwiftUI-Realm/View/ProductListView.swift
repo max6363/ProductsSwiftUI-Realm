@@ -50,6 +50,9 @@ struct ProductListView: View {
                                 modelData.openNewProduct.toggle()
                             }
                     }
+                    .onDelete { indexSet in
+                        deleteProducts(at: indexSet)
+                    }
                 }
             }
             .listStyle(GroupedListStyle())
@@ -74,6 +77,13 @@ struct ProductListView: View {
                 AddProductView()
                     .environmentObject(modelData)
             })
+        }
+    }
+    
+    private func deleteProducts(at indexSet: IndexSet) {
+        for index in indexSet {
+            let objectToDelete = modelData.products[index]
+            modelData.deleteData(object: objectToDelete)
         }
     }
 }

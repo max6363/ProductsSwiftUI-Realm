@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AddProductView: View {
     
+    @State var selectedCategory: Kind = .Others
     @EnvironmentObject var modelData: DBViewModel
     @Environment(\.presentationMode) var presentation
     
@@ -28,6 +29,16 @@ struct AddProductView: View {
                 Section(header: Text("Price")) {
                     TextField("", text: $modelData.price)
                         .keyboardType(.numberPad)
+                }
+                
+                Section(header: Text("Category")) {
+                    Picker(selection: $modelData.category, label: Text("Choose category")) {
+                        ForEach(Array(Kind.allCases), id:\.self) { category in
+                            Text(category.rawValue)
+                        }
+                    }
+                    .pickerStyle(MenuPickerStyle())
+                    
                 }
         
             }
@@ -86,6 +97,7 @@ struct AddProductView: View {
         newProduct.title = modelData.title
         newProduct.itemDescription = modelData.itemDescription
         newProduct.price = Double(modelData.price) ?? 0.0
+        newProduct.category?.name = modelData.category.rawValue
         modelData.addData(object: newProduct)
         
         // dismiss view

@@ -25,6 +25,7 @@ class DBViewModel: ObservableObject {
     @Published var title = ""
     @Published var itemDescription = ""
     @Published var price = "0"
+    @Published var category: Kind = .Others
     
     // Fetched Data ...
     @Published var products: [Product] = []
@@ -46,10 +47,31 @@ class DBViewModel: ObservableObject {
         fetchData()
     }
     
+    private func realmConfiguration() -> Realm.Configuration {
+        let configuration = Realm.Configuration(
+            schemaVersion: 3,
+            migrationBlock: { migration, oldVersion in
+                if oldVersion < 2 {
+                    migration.enumerateObjects(ofType: "Product") { old, new in
+                        let otherCategory = Category()
+                        otherCategory.name = Kind.Others.rawValue
+                        new?["category"] = otherCategory
+                    }
+                }
+                if oldVersion < 3 {
+                    migration.enumerateObjects(ofType: Category.className()) { oldObject, newObject in
+                        newObject!["name"] = Kind.Others.rawValue
+                    }
+                }
+            }
+        )
+        return configuration
+    }
+    
     // Fetching Data...
     func fetchData() {
         
-        guard let dbRef = try? Realm() else { return }
+        guard let dbRef = try? Realm(configuration: realmConfiguration()) else { return }
         
         var results = dbRef.objects(Product.self)
         
@@ -76,7 +98,7 @@ class DBViewModel: ObservableObject {
     func addData(object: Product) {
         
         // reference
-        guard let dbRef = try? Realm() else { return }
+        guard let dbRef = try? Realm(configuration: realmConfiguration()) else { return }
         
         // writing data
         try? dbRef.write {
@@ -91,13 +113,27 @@ class DBViewModel: ObservableObject {
     func updateData(object: Product) {
         
         // reference
-        guard let dbRef = try? Realm() else { return }
+        guard let dbRef = try? Realm(configuration: realmConfiguration()) else { return }
         
         // updating data
         try? dbRef.write {
             object.title = title
             object.itemDescription = itemDescription
             object.price = Double(price) ?? 0.0
+            object.category?.name = category.rawValue
+            fetchData()
+        }
+    }
+    
+    // Delete data ...
+    func deleteData(object: Product) {
+        
+        // reference
+        guard let dbRef = try? Realm(configuration: realmConfiguration()) else { return }
+        
+        // deleting data
+        try? dbRef.write {
+            dbRef.delete(object)
             
             fetchData()
         }
@@ -113,6 +149,11 @@ class DBViewModel: ObservableObject {
         title = updateData.title
         itemDescription = updateData.itemDescription
         price = "\(updateData.price)"
+        if let category_ = Kind(rawValue: updateData.category?.name ?? Kind.Others.rawValue) {
+            category = category_
+        } else {
+            category = .Others
+        }
     }
     
     func deInitData() {
@@ -120,5 +161,6 @@ class DBViewModel: ObservableObject {
         title = ""
         itemDescription = ""
         price = ""
+        category = .Others
     }
 }

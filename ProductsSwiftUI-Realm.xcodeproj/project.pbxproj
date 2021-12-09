@@ -17,6 +17,7 @@
 		888E96A22760B96C00F59C0F /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888E96A12760B96C00F59C0F /* Product.swift */; };
 		888E96A52760B9E800F59C0F /* DataCreater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888E96A42760B9E800F59C0F /* DataCreater.swift */; };
 		888E96A72761C3FF00F59C0F /* AddProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888E96A62761C3FF00F59C0F /* AddProductView.swift */; };
+		888E96A92761FCED00F59C0F /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888E96A82761FCED00F59C0F /* Category.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		888E96A12760B96C00F59C0F /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		888E96A42760B9E800F59C0F /* DataCreater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCreater.swift; sourceTree = "<group>"; };
 		888E96A62761C3FF00F59C0F /* AddProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductView.swift; sourceTree = "<group>"; };
+		888E96A82761FCED00F59C0F /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		9F29A3BCF12A70CF60A0588E /* Pods-ProductsSwiftUI-Realm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProductsSwiftUI-Realm.release.xcconfig"; path = "Target Support Files/Pods-ProductsSwiftUI-Realm/Pods-ProductsSwiftUI-Realm.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -116,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				888E96A12760B96C00F59C0F /* Product.swift */,
+				888E96A82761FCED00F59C0F /* Category.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 				888E96A02760B8F200F59C0F /* DBViewModel.swift in Sources */,
 				888E96A52760B9E800F59C0F /* DataCreater.swift in Sources */,
 				888E968D2760B69800F59C0F /* ProductsSwiftUI_RealmApp.swift in Sources */,
+				888E96A92761FCED00F59C0F /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
