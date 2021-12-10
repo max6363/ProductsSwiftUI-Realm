@@ -16,4 +16,5 @@ class Product: Object, Identifiable {
     @objc dynamic var price = 0.0
     @objc dynamic var dateAdded: Date = Date()
     @objc dynamic var category: Category? = Category()
+    var photos = List<String>()
 }

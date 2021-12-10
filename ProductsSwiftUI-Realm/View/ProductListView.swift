@@ -9,8 +9,8 @@ import SwiftUI
 
 struct ProductListView: View {
     
-    @State private var sortingOption = "Date Added"
-    var options = ["Date Added", "Title"]
+    @State private var sortingOption = "Title"
+    var options = ["Date Added", "Title", "Price"]
     
     @State private var sortingOrder = "Ascending"
     var sortingOptions = ["Ascending", "Descending"]
@@ -19,25 +19,7 @@ struct ProductListView: View {
     
     var body: some View {
         NavigationView {
-                        
             VStack {
-                
-                SegmentedView(selectedOption: $sortingOption,
-                              text: "Sort by",
-                              options: options)
-                    .onChange(of: sortingOption) { option in
-                        modelData.sortBy = option == "Date Added" ? .dateAdded : .title
-                        modelData.fetchData()
-                    }
-                
-                SegmentedView(selectedOption: $sortingOrder,
-                              text: "Sorting order",
-                              options: sortingOptions)
-                    .onChange(of: sortingOrder) { option in
-                        modelData.sortingOrder = option == "Ascending" ? .ascending : .descending
-                        modelData.fetchData()
-                    }
-                
                 List {
                     ForEach(modelData.products) { product in
                         ProductItemRow(product: product)
@@ -54,8 +36,75 @@ struct ProductListView: View {
                         deleteProducts(at: indexSet)
                     }
                 }
+                .listRowSeparator(.hidden)
+                
+                HStack {
+                    
+                    HStack {
+                        VStack(alignment: .leading) {
+                            
+                            Text("Sorting by")
+                                .font(.system(size: 10, weight: .light, design: .default))
+                                .padding(0)
+                            Picker("Sort", selection: $sortingOption) {
+                                ForEach(options, id:\.self) {
+                                    Text($0)
+                                }
+                            }
+                            .padding(0)
+                            .onChange(of: sortingOption) { option in
+
+                                switch option {
+                                case "Date Added":
+                                    modelData.sortBy = .dateAdded
+                                case "Title":
+                                    modelData.sortBy = .title
+                                case "Price":
+                                    modelData.sortBy = .price
+                                default:
+                                    modelData.sortBy = .title
+                                }
+                                modelData.fetchData()
+                            }
+                        }
+                    }
+                    .padding(5)
+                    .frame(minWidth: 0,
+                           maxWidth: .infinity,
+                           minHeight: 0,
+                           maxHeight: 40,
+                           alignment: .center)
+                    
+                    Spacer()
+                    
+                    HStack {
+                        VStack(alignment: .leading) {
+                            
+                            Text("Sorting order")
+                                .font(.system(size: 10, weight: .light, design: .default))
+                                .padding(0)
+                            Picker("Sort", selection: $sortingOrder) {
+                                ForEach(sortingOptions, id:\.self) {
+                                    Text($0)
+                                }
+                            }
+                            .padding(0)
+                            .onChange(of: sortingOrder) { option in
+                                modelData.sortingOrder = option == "Ascending" ? .ascending : .descending
+                                modelData.fetchData()
+                            }
+                        }
+                    }
+                    .padding(5)
+                    .frame(minWidth: 0,
+                           maxWidth: .infinity,
+                           minHeight: 0,
+                           maxHeight: 40,
+                           alignment: .center)
+
+                }
             }
-            .listStyle(GroupedListStyle())
+            .listStyle(.grouped)
             .navigationTitle("Products")
             .navigationBarTitleDisplayMode(.inline)
             .searchable(text: $modelData.searchString,
@@ -99,50 +148,5 @@ struct ProductListView: View {
 struct ProductListView_Previews: PreviewProvider {
     static var previews: some View {
         ProductListView()
-    }
-}
-
-struct ProductItemRow: View {
-    
-    var product: Product
-    
-    var body: some View {
-        HStack {
-            VStack(alignment: .leading) {
-                Text(product.title)
-                    .font(.system(size: 22, weight: .medium, design: .default))
-                Text(product.itemDescription)
-                    .font(.caption)
-                    .foregroundColor(.gray)
-                Text(product.dateAdded.formatted())
-                    .font(.caption2)
-            }
-            Spacer()
-            Text(String(format: "$%.2f", product.price))
-                .font(.system(size: 19, weight: .regular, design: .default))
-        }
-    }
-}
-
-struct SegmentedView: View {
-    
-    @Binding var selectedOption: String
-    var text: String
-    var options: [String]
-    
-    var body: some View {
-        HStack {
-            VStack(alignment: .leading) {
-                Text(text)
-                    .font(.caption)
-                Picker(text, selection: $selectedOption) {
-                    ForEach(options, id:\.self) {
-                        Text($0)
-                    }
-                }
-                .pickerStyle(.segmented)
-            }
-        }
-        .padding(5)
     }
 }

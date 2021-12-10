@@ -11,22 +11,12 @@ struct ProductsList: View {
     
     var category: Category
     
-    @StateObject var modelData = DBViewModel()
-    
     @StateObject var categoryModelData = CategoriesViewModel()
     
     var body: some View {
         List {
             ForEach(categoryModelData.products) { product in
                 ProductItemRow(product: product)
-                    .onTapGesture {
-
-                        modelData.title = product.title
-                        modelData.itemDescription = product.itemDescription
-                        modelData.price = "\(product.price)"
-                        modelData.updateProduct = product
-                        modelData.openNewProduct.toggle()
-                    }
             }
         }
         .navigationTitle(Text(category.name))

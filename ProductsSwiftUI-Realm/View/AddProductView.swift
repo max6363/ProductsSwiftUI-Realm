@@ -97,7 +97,11 @@ struct AddProductView: View {
         newProduct.title = modelData.title
         newProduct.itemDescription = modelData.itemDescription
         newProduct.price = Double(modelData.price) ?? 0.0
-        newProduct.category?.name = modelData.category.rawValue
+        newProduct.category?.name = modelData.category.rawValue        
+        newProduct.photos.append("https://source.unsplash.com/user/c_v_r/1900x800")
+        newProduct.photos.append("https://dummyimage.com/300/09f/fff.png")
+        newProduct.photos.append("https://dummyimage.com/300/09f/fff.png")
+        newProduct.photos.append("https://dummyimage.com/300/09f/fff.png")
         modelData.addData(object: newProduct)
         
         // dismiss view

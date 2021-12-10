@@ -12,6 +12,7 @@ import SwiftUI
 enum SortBy {
     case title
     case dateAdded
+    case price
 }
 
 enum SortingOrder {
@@ -32,7 +33,7 @@ class DBViewModel: ObservableObject {
     
     // Searching ...
     @Published var searchString: String = ""
-    @Published var sortBy: SortBy = .dateAdded
+    @Published var sortBy: SortBy = .title
     @Published var sortingOrder: SortingOrder = .ascending
     
     // Dismiss Adding Page ...
@@ -60,6 +61,9 @@ class DBViewModel: ObservableObject {
             
         } else if sortBy == .dateAdded {
             results = results.sorted(byKeyPath: "dateAdded",
+                                     ascending: sortingOrder == .ascending)
+        } else if sortBy == .price {
+            results = results.sorted(byKeyPath: "price",
                                      ascending: sortingOrder == .ascending)
         }
         
@@ -144,25 +148,4 @@ class DBViewModel: ObservableObject {
     }
 }
 
-struct DBManager {
-    static func realmConfiguration() -> Realm.Configuration {
-        let configuration = Realm.Configuration(
-            schemaVersion: 3,
-            migrationBlock: { migration, oldVersion in
-                if oldVersion < 2 {
-                    migration.enumerateObjects(ofType: "Product") { old, new in
-                        let otherCategory = Category()
-                        otherCategory.name = Kind.Others.rawValue
-                        new?["category"] = otherCategory
-                    }
-                }
-                if oldVersion < 3 {
-                    migration.enumerateObjects(ofType: Category.className()) { oldObject, newObject in
-                        newObject!["name"] = Kind.Others.rawValue
-                    }
-                }
-            }
-        )
-        return configuration
-    }
-}
+
