@@ -4,6 +4,9 @@ Products list demo in SwiftUI using Realm
 
 # Demo Videos
 
+### Realm Product with Photo
+https://user-images.githubusercontent.com/21213161/145574038-5dedd106-43ed-4565-b240-a1d09a549fed.mov
+
 ### Realm Relation [Product-Categories]
 https://user-images.githubusercontent.com/21213161/145410285-4e7cf66a-4d1a-453a-a7a1-04ab394788e9.mov
 
